@@ -1,0 +1,238 @@
+.catalog {
+  margin-bottom: 200px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  &__sidebar {
+    border-right: 1px solid #e4e4e4;
+    padding: 20px;
+
+    &--arrow {
+      display: none;
+    }
+    &--route {
+      font-size: 14px;
+      cursor: pointer;
+      line-height: 22px;
+      a {
+        color: #262b38;
+      }
+      span {
+        color: #959bad;
+      }
+    }
+  }
+  &__content {
+  }
+}
+
+.catalog__sidebar {
+  &--title {
+    display: none;
+  }
+  &--tag {
+    margin-top: 20px;
+  }
+  &--items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    list-style-type: none;
+  }
+  &--item {
+  }
+  &--link {
+    color: #262b38;
+    &--active {
+      color: #5c94ff;
+    }
+  }
+  &--link:hover {
+    color: #5c94ff;
+    transition-duration: 300ms;
+  }
+}
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 32px;
+  height: 20px;
+  background: rgba(149, 155, 173, 0.4);
+  display: block;
+  border-radius: 20px;
+  position: relative;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #3e4454;
+}
+
+input:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 22px;
+}
+
+.catalog__content {
+  padding: 20px 20px 20px 70px;
+  &--checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  &--banner {
+    color: #fff;
+    font-size: 24px;
+    padding: 36px 20px;
+    text-align: center;
+    line-height: 22px;
+
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  &--items {
+    margin-top: 40px;
+  }
+}
+
+.catalog__content {
+  &--list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 60px;
+    grid-row-gap: 30px;
+  }
+  &--title {
+    color: #262b38;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  &--items {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &--item {
+    list-style-type: none;
+  }
+  &--link {
+    color: #272a36;
+    line-height: 22px;
+    &:hover {
+      color: #5c94ff;
+      transition-duration: 300ms;
+    }
+  }
+  &--more {
+    display: flex;
+    align-items: center;
+    color: #5c94ff;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .catalog__content {
+    &--list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 60px;
+      grid-row-gap: 30px;
+    }
+  }
+}
+@media (max-width: 640px) {
+  .catalog {
+    display: block;
+    &__sidebar {
+      padding: 0;
+    }
+  }
+  .catalog__content {
+    display: none;
+  }
+  .catalog__sidebar--route {
+    display: none;
+  }
+  .catalog__sidebar {
+    &--title {
+      display: block;
+      color: #262b38;
+      font-weight: 700;
+      padding-top: 20px;
+      padding-left: 20px;
+    }
+
+    &--arrow {
+      display: block;
+    }
+    &--items {
+      gap: 0px;
+    }
+    &--item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      border-top: 1px solid #e4e4e4;
+      border-bottom: 1px solid #e4e4e4;
+    }
+    &--top {
+      padding: 20px 15px;
+    }
+  }
+  .catalog__sidebar--link--active {
+    color: #262b38;
+  }
+}
+
+.catalog__sidebar--top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.catalog__sidebar--dropdown {
+  padding: 15px;
+  display: none;
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4;
+
+  background: linear-gradient(
+      0deg,
+      rgba(228, 228, 228, 0.4) 0%,
+      rgba(228, 228, 228, 0.4) 100%
+    ),
+    #fff;
+}
+
+.catalog__sidebar--item.open .catalog__sidebar--dropdown {
+  display: block;
+}
